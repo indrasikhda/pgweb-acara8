@@ -4,33 +4,45 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Input Data Kecamatan</title>
+    <title>Input Data Kecamatan - Futuristic</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
         body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            background: linear-gradient(to right, #f5f5f5, #ffffff);
-            color: #333;
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(45deg, #1a237e, #0d47a1);
+            color: #fff;
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
             margin: 0;
+            overflow-x: hidden;
         }
         .container {
-            background: rgba(255, 255, 255, 0.3);
+            background: rgba(255, 255, 255, 0.05);
             padding: 30px 40px;
             border-radius: 15px;
-            box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.1 );
-            backdrop-filter: blur(5px);
-            -webkit-backdrop-filter: blur(5px);
-            border: 1px solid rgba( 255, 255, 255, 0.18 );
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.18);
             width: 100%;
             max-width: 400px;
+            animation: fadeIn 1s ease-in-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
         }
         h2 {
             text-align: center;
-            color: #333;
+            color: #fff;
             margin-bottom: 20px;
+            font-weight: 600;
+            letter-spacing: 1px;
         }
         form {
             display: flex;
@@ -38,58 +50,61 @@
         }
         label {
             margin-bottom: 5px;
-            color: #333;
-            font-weight: 500;
+            color: #fff;
+            font-weight: 400;
         }
         input[type="text"] {
-            background: rgba(0, 0, 0, 0.05);
-            color: #333;
+            background: rgba(255, 255, 255, 0.1);
+            color: #fff;
             padding: 10px;
             margin-bottom: 15px;
-            border: 1px solid rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
             border-radius: 5px;
             font-size: 16px;
             box-sizing: border-box;
             width: 100%;
-            transition: border-color 0.3s, background-color 0.3s;
+            transition: all 0.3s ease;
         }
         input[type="text"]::placeholder {
-            color: rgba(0, 0, 0, 0.4);
+            color: rgba(255, 255, 255, 0.7);
         }
         input[type="text"]:focus {
-            background: rgba(0, 0, 0, 0.1);
-            border-color: rgba(0, 0, 0, 0.2);
+            background: rgba(255, 255, 255, 0.2);
+            border-color: rgba(0, 255, 255, 0.5);
             outline: none;
+            box-shadow: 0 0 10px rgba(0, 255, 255, 0.3);
         }
         input[type="submit"] {
-            background-color: rgba(0, 0, 0, 0.1);
-            color: #333;
+            background-color: rgba(0, 255, 255, 0.2);
+            color: white;
             padding: 12px;
-            border: 1px solid rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(0, 255, 255, 0.3);
             border-radius: 5px;
             cursor: pointer;
             font-size: 16px;
             font-weight: 600;
-            transition: background-color 0.3s;
+            transition: all 0.3s ease;
         }
         input[type="submit"]:hover {
-            background-color: rgba(0, 0, 0, 0.2);
+            background-color: rgba(0, 255, 255, 0.4);
+            box-shadow: 0 0 15px rgba(0, 255, 255, 0.5);
+            transform: translateY(-2px);
         }
         #informasi {
-            color: #D8000C;
-            background-color: #FFD2D2;
+            color: #fff;
+            background-color: rgba(216, 0, 12, 0.5);
             text-align: center;
             padding: 10px;
             border-radius: 5px;
             margin-top: 15px;
-            border: 1px solid #D8000C;
+            border: 1px solid rgba(216, 0, 12, 0.7);
         }
     </style>
 </head>
 
 <body>
     <div class="container">
-        <h2>Form Input</h2>
+        <h2><i class="fas fa-plus-circle"></i> Form Input</h2>
         <form action="input.php" onsubmit="return validateForm()" method="post">
             <label for="kecamatan">Kecamatan:</label>
             <input type="text" id="kec" name="kecamatan" value="">
