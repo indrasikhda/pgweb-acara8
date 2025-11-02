@@ -17,89 +17,64 @@
     <style>
         body {
             font-family: 'Poppins', sans-serif;
-            background: linear-gradient(45deg, #1a237e, #0d47a1);
-            color: #fff;
+            background-color: #f0f2f5;
+            color: #333;
             margin: 0;
             padding: 20px;
             display: flex;
             flex-direction: column;
             align-items: center;
             min-height: 100vh;
-            overflow-x: hidden;
         }
         h2 {
-            color: #fff;
+            color: #333;
             margin-bottom: 20px;
             text-align: center;
             font-weight: 600;
-            letter-spacing: 1px;
         }
         .container {
             width: 90%;
             max-width: 1200px;
-            background: rgba(255, 255, 255, 0.05);
+            background: #fff;
             padding: 30px 40px;
-            border-radius: 15px;
-            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
-            backdrop-filter: blur(15px);
-            -webkit-backdrop-filter: blur(15px);
-            border: 1px solid rgba(255, 255, 255, 0.18);
-            animation: fadeIn 1s ease-in-out;
-        }
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
+            border-radius: 8px;
         }
         .btn-input {
             display: inline-block;
-            background-color: rgba(0, 255, 255, 0.2);
-            color: #fff;
-            padding: 10px 15px;
-            text-decoration: none;
-            border-radius: 5px;
+            color: #333;
+            padding: 10px 0;
+            text-decoration: underline;
             margin-bottom: 20px;
-            transition: all 0.3s ease;
-            align-self: flex-start;
-            border: 1px solid rgba(0, 255, 255, 0.3);
-            font-weight: 400;
+            font-weight: 600;
         }
         .btn-input:hover {
-            background-color: rgba(0, 255, 255, 0.4);
-            box-shadow: 0 0 15px rgba(0, 255, 255, 0.5);
-            transform: translateY(-2px);
+            color: #555;
         }
         table {
             width: 100%;
             border-collapse: collapse;
-            color: #fff;
+            color: #333;
         }
         th, td {
             padding: 12px 15px;
             text-align: left;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            border-bottom: 1px solid #eee;
         }
         th {
-            background-color: rgba(0, 255, 255, 0.1);
+            background-color: #f9f9f9;
             font-weight: 600;
-        }
-        tr {
-            transition: background-color 0.3s ease;
-        }
-        tr:hover {
-            background-color: rgba(0, 255, 255, 0.05);
         }
         #map {
             height: 400px;
             width: 100%;
             margin-top: 20px;
-            border-radius: 10px;
-            border: 1px solid rgba(255, 255, 255, 0.18);
+            border-radius: 8px;
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <h2><i class="fas fa-satellite-dish"></i> Data Kecamatan</h2>
+        <h2>Data Kecamatan</h2>
         <?php
         //koneksi ke database
         $servername = "localhost";
@@ -124,7 +99,7 @@
                     <tr>
                         <th><i class=\"fas fa-id-card\"></i> ID</th>
                         <th><i class=\"fas fa-map-marker-alt\"></i> Nama Kecamatan</th>
-                        <th><i class=\"fas fa-ruler-combined\"></i> Luas (km²)<\/th>
+                        <th><i class=\"fas fa-ruler-combined\"></i> Luas (km²)</th>
                         <th><i class=\"fas fa-users\"></i> Jumlah Penduduk</th>
                         <th><i class=\"fas fa-longitude\"></i> Longitude</th>
                         <th><i class=\"fas fa-latitude\"></i> Latitude</th>
@@ -156,7 +131,7 @@
     <script>
         var map = L.map('map').setView([-7.7956, 110.3695], 10);
 
-        L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
+        L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
             attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
             subdomains: 'abcd',
             maxZoom: 19
@@ -164,8 +139,8 @@
 
         var data = <?php echo json_encode($data); ?>;
 
-        var futuristicIcon = L.divIcon({
-            className: 'futuristic-icon',
+        var customIcon = L.divIcon({
+            className: 'map-marker-icon',
             html: '<i class="fas fa-map-pin"></i>',
             iconSize: [30, 30],
             iconAnchor: [15, 30],
@@ -174,16 +149,15 @@
 
         data.forEach(function(row) {
             if (row.latitude && row.longitude) {
-                L.marker([row.latitude, row.longitude], {icon: futuristicIcon}).addTo(map)
+                L.marker([row.latitude, row.longitude], {icon: customIcon}).addTo(map)
                     .bindPopup('<b>' + row.kecamatan + '</b><br>Luas: ' + row.luas + ' km²<br>Jumlah Penduduk: ' + row.jumlah_penduduk);
             }
         });
     </script>
     <style>
-        .futuristic-icon {
-            color: #00ffff;
+        .map-marker-icon {
+            color: #333;
             font-size: 24px;
-            text-shadow: 0 0 10px #00ffff;
         }
     </style>
 </body>

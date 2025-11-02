@@ -46,8 +46,8 @@ $conn->close();
     <style>
         body {
             font-family: 'Poppins', sans-serif;
-            background: linear-gradient(45deg, #1a237e, #0d47a1);
-            color: #fff;
+            background-color: #f0f2f5;
+            color: #333;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -56,21 +56,20 @@ $conn->close();
             flex-direction: column;
         }
         .message-box {
-            background: rgba(255, 255, 255, 0.1);
+            background: #fff;
             padding: 20px 30px;
-            border-radius: 10px;
-            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 8px;
             text-align: center;
-            box-shadow: 0 8px 32px rgba(0,0,0,0.3);
         }
         a {
-            color: #00ffff;
-            text-decoration: none;
+            color: #333;
+            text-decoration: underline;
             margin-top: 15px;
             display: inline-block;
+            font-weight: 600;
         }
         a:hover {
-            text-decoration: underline;
+            color: #555;
         }
     </style>
 </head>
