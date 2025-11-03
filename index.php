@@ -88,7 +88,7 @@
 </head>
 <body>
     <div class="container">
-        <h2>Data Kecamatan</h2>
+        <h2>Web GIS Kabupaten Sleman</h2>
         <?php
         //koneksi ke database
         $servername = "localhost";
