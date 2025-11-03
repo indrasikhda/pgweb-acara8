@@ -70,6 +70,20 @@
             margin-top: 20px;
             border-radius: 8px;
         }
+        .btn-edit, .btn-hapus {
+            display: inline-block;
+            padding: 5px 10px;
+            color: #fff;
+            border-radius: 5px;
+            text-decoration: none;
+            margin-right: 5px;
+        }
+        .btn-edit {
+            background-color: #28a745;
+        }
+        .btn-hapus {
+            background-color: #dc3545;
+        }
     </style>
 </head>
 <body>
@@ -103,6 +117,7 @@
                         <th><i class=\"fas fa-users\"></i> Jumlah Penduduk</th>
                         <th><i class=\"fas fa-longitude\"></i> Longitude</th>
                         <th><i class=\"fas fa-latitude\"></i> Latitude</th>
+                        <th><i class=\"fas fa-cogs\"></i> Aksi</th>
                     </tr>";
 
             // Output data per baris
@@ -115,6 +130,10 @@
                         <td>" . $row["jumlah_penduduk"] . "</td>
                         <td>" . $row["longitude"] . "</td>
                         <td>" . $row["latitude"] . "</td>
+                        <td>
+                            <a href='edit.php?id=" . $row["id"] . "' class='btn-edit'><i class='fas fa-edit'></i> Edit</a>
+                            <a href='hapus.php?id=" . $row["id"] . "' class='btn-hapus'><i class='fas fa-trash'></i> Hapus</a>
+                        </td>
                       </tr>";
             }
 
