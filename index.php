@@ -145,5 +145,6 @@
 
         ?>
         <?php include 'leafletjs.php'; ?>
+    </div>
 </body>
 </html>
