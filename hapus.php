@@ -27,7 +27,7 @@ if ($conn->query($sql) === TRUE) {
 
 $conn->close();
 
-// Redirect kembali ke halaman utama
+
 header("Location: index.php");
 exit;
 ?>
